@@ -1,6 +1,8 @@
 package com.example.tyson.retrofitexample.Model;
 
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,7 +39,7 @@ public class InstagramAdapter extends RecyclerView.Adapter<InstagramAdapter.Hold
     @Override
     public void onBindViewHolder(InstagramAdapter.Holder holder, int position) {
         InstagramData.instagramclass instagramData = mInstagramData.get(position);
-        holder.mName.setText(instagramData.filter);
+        holder.mName.setText(instagramData.user.username);
         holder.mCategory.setText(instagramData.createdTime);
         holder.mPrice.setText(instagramData.link);
         holder.mInstructions.setText(instagramData.id);
@@ -45,6 +47,9 @@ public class InstagramAdapter extends RecyclerView.Adapter<InstagramAdapter.Hold
         Picasso.with(holder.itemView.getContext())
                 .load(instagramData.images.thumbnail.url)
                 .into(holder.mImage);
+        /*if(!TextUtils.isEmpty(instagramData.images.standardResolution.url)){
+            Log.d(TAG, "Standard Resolution ------ " + instagramData.images.standardResolution.url);
+        }*/
     }
 
     @Override

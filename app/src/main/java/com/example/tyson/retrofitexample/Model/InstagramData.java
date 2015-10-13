@@ -28,13 +28,11 @@ public class InstagramData {
         //public Caption caption;
         public String type;
         public String id;
-        //public User user;
-
+        public User user;
 
         @Override
         public String toString() {
             return ("link is " + link);
-
         }
     }
 

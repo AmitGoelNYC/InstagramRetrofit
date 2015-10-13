@@ -34,7 +34,7 @@ public class Controller {
                 public void success(InstagramData instaData, Response response) {
                     Log.d(TAG, response.getUrl());
                     for (int i = 0; i < instaData.instagrams.size(); i++) {
-                        Log.d(TAG, searchText + " Link - " + instaData.instagrams.get(i).images.thumbnail.url);
+                        Log.d(TAG, searchText + " Username - " + instaData.instagrams.get(i).user.username);
                     }
 
                     mListener.onFetchProgress(instaData.instagrams);
