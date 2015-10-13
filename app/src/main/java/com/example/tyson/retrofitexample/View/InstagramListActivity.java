@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.Log;
@@ -27,6 +28,8 @@ public class InstagramListActivity extends AppCompatActivity {
 
     private String searchText;
 
+    private RecyclerView mRecyclerView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,7 +46,7 @@ public class InstagramListActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-       // downloadData();
+        downloadData();
     }
 
     private void downloadData() {
