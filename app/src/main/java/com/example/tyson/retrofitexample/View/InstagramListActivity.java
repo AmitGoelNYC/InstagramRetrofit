@@ -12,6 +12,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 
+import com.example.tyson.retrofitexample.Controller.Controller;
 import com.example.tyson.retrofitexample.Model.InstagramAdapter;
 import com.example.tyson.retrofitexample.Model.InstagramData;
 import com.example.tyson.retrofitexample.R;
@@ -24,16 +25,15 @@ import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
 
-public class InstagramListActivity extends AppCompatActivity {
+public class InstagramListActivity extends AppCompatActivity implements Controller.InstagramCallbackListener{
 
     //private static final String USER = "AMITGOELNYC";
-    private static final String CLIENT_ID = "5f9365e9f1054aa991726d731c65aa02";
-    private static final String TAG = InstagramListActivity.class.getSimpleName();
     private String searchText;
     private RecyclerView mRecyclerView;
     private SwipeRefreshLayout mSwipeRefreshLayout;
     private InstagramAdapter mInstagramAdapter;
-    private List<InstagramData> mInstaList = new ArrayList<>();
+    private List<InstagramData.instagramclass> mInstaList = new ArrayList<>();
+    private Controller mController;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +42,7 @@ public class InstagramListActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        mController = new Controller(this);
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             searchText = extras.getString("SearchParam");
@@ -56,31 +57,38 @@ public class InstagramListActivity extends AppCompatActivity {
 
         mInstagramAdapter = new InstagramAdapter(mInstaList);
         mRecyclerView.setAdapter(mInstagramAdapter);
+
+
+        mController.startFetching(searchText);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        downloadData();
     }
 
-    private void downloadData() {
-        if (!TextUtils.isEmpty(searchText)) {
-            RetrofitExample.getGitHubApiClient().getInstaData(searchText, CLIENT_ID, new Callback<InstagramData>() {
-                @Override
-                public void success(InstagramData instaData, Response response) {
-                    Log.d(TAG, response.getUrl());
-                    for (int i = 0; i < instaData.instagrams.size(); i++) {
-                        Log.d(TAG, searchText + " Link - " + instaData.instagrams.get(i).images.thumbnail.url);
-                    }
-                }
+    @Override
+    public void onFetchStart() {
 
-                @Override
-                public void failure(RetrofitError retrofitError) {
-                    Log.d(TAG, "Retrofit failed - " + retrofitError.getMessage());
-                }
-            });
-        }
+    }
+
+    @Override
+    public void onFetchProgress(InstagramData instagramData) {
+
+    }
+
+    @Override
+    public void onFetchProgress(List<InstagramData.instagramclass> instagramclass) {
+        mInstagramAdapter.setList(instagramclass);
+    }
+
+    @Override
+    public void onFetchComplete() {
+
+    }
+
+    @Override
+    public void onFetchFailed() {
 
     }
 }

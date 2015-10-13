@@ -16,15 +16,15 @@ public class InstagramAdapter extends RecyclerView.Adapter<InstagramAdapter.Hold
 
     public static String TAG = InstagramAdapter.class.getSimpleName();
 
-    private List<InstagramData> mInstagramData;
+    private List<InstagramData.instagramclass> mInstagramData;
 
-    public InstagramAdapter(List<InstagramData> instaData){
+    public InstagramAdapter(List<InstagramData.instagramclass> instaData){
         mInstagramData = instaData;
     }
 
     public void addInstagramData(InstagramData instagramData) {
-        mInstagramData.add(instagramData);
-        notifyDataSetChanged();
+//        mInstagramData.add(instagramData);
+//        notifyDataSetChanged();
     }
 
     @Override
@@ -36,20 +36,25 @@ public class InstagramAdapter extends RecyclerView.Adapter<InstagramAdapter.Hold
 
     @Override
     public void onBindViewHolder(InstagramAdapter.Holder holder, int position) {
-        InstagramData instagramData = mInstagramData.get(position);
-        holder.mName.setText(instagramData.mName);
-        holder.mCategory.setText(instagramData.mCategory);
-        holder.mPrice.setText(Double.toString(instagramData.mPrice));
-        holder.mInstructions.setText(instagramData.mInstructions);
+        InstagramData.instagramclass instagramData = mInstagramData.get(position);
+        holder.mName.setText(instagramData.filter);
+        holder.mCategory.setText(instagramData.createdTime);
+        holder.mPrice.setText(instagramData.link);
+        holder.mInstructions.setText(instagramData.id);
 
         Picasso.with(holder.itemView.getContext())
-                .load(instagramData.instagrams.get(position).images.thumbnail.url)
+                .load(instagramData.images.thumbnail.url)
                 .into(holder.mImage);
     }
 
     @Override
     public int getItemCount() {
         return mInstagramData.size();
+    }
+
+    public void setList(List<InstagramData.instagramclass> list) {
+        this.mInstagramData = list;
+        notifyDataSetChanged();
     }
 
     public class Holder extends RecyclerView.ViewHolder {
