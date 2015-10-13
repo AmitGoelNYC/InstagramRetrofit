@@ -58,23 +58,23 @@ public class InstagramListActivity extends AppCompatActivity implements Controll
         mInstagramAdapter = new InstagramAdapter(mInstaList);
         mRecyclerView.setAdapter(mInstagramAdapter);
 
-
         mController.startFetching(searchText);
+
+        mSwipeRefreshLayout.setColorSchemeColors(getResources().getColor(R.color.colorAccent),
+                getResources().getColor(R.color.colorPrimary),
+                getResources().getColor(R.color.colorPrimaryDark));
+
+        mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                mController.startFetching(searchText);
+            }
+        });
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-    }
-
-    @Override
-    public void onFetchStart() {
-
-    }
-
-    @Override
-    public void onFetchProgress(InstagramData instagramData) {
-
     }
 
     @Override
@@ -84,7 +84,7 @@ public class InstagramListActivity extends AppCompatActivity implements Controll
 
     @Override
     public void onFetchComplete() {
-
+        mSwipeRefreshLayout.setRefreshing(false);
     }
 
     @Override

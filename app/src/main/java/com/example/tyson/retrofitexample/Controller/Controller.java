@@ -38,6 +38,7 @@ public class Controller {
                     }
 
                     mListener.onFetchProgress(instaData.instagrams);
+                    mListener.onFetchComplete();
                 }
 
                 @Override
@@ -49,8 +50,6 @@ public class Controller {
     }
 
     public interface InstagramCallbackListener {
-        void onFetchStart();
-        void onFetchProgress(InstagramData instagramData);
         void onFetchProgress(List<InstagramData.instagramclass> instagramclass);
         void onFetchComplete();
         void onFetchFailed();
