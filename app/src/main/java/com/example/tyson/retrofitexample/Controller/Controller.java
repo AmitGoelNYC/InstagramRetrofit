@@ -4,8 +4,7 @@ import android.text.TextUtils;
 import android.util.Log;
 
 import com.example.tyson.retrofitexample.Model.InstagramData;
-import com.example.tyson.retrofitexample.RetrofitExample;
-import com.example.tyson.retrofitexample.View.InstagramListActivity;
+import com.example.tyson.retrofitexample.Model.RetrofitExample;
 
 import java.util.List;
 

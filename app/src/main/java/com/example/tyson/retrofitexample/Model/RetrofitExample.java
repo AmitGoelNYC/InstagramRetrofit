@@ -1,4 +1,4 @@
-package com.example.tyson.retrofitexample;
+package com.example.tyson.retrofitexample.Model;
 
 import com.example.tyson.retrofitexample.Model.InstagramData;
 
