@@ -4,5 +4,9 @@
         <item name="windowNoTitle">true</item>
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:colorControlHighlight">@color/accent_translucent</item> 
+        <item name="android:windowSharedElementsUseOverlay">false</item>
     </style>
+    <color name="accent_translucent">#80FFEB3B</color>
 </resources>

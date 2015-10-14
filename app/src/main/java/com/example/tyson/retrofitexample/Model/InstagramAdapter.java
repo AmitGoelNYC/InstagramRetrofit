@@ -20,7 +20,7 @@ public class InstagramAdapter extends RecyclerView.Adapter<InstagramAdapter.Hold
 
     private List<InstagramData.instagramclass> mInstagramData;
 
-    public InstagramAdapter(List<InstagramData.instagramclass> instaData){
+    public InstagramAdapter(List<InstagramData.instagramclass> instaData) {
         mInstagramData = instaData;
     }
 
@@ -46,6 +46,9 @@ public class InstagramAdapter extends RecyclerView.Adapter<InstagramAdapter.Hold
 
         Picasso.with(holder.itemView.getContext())
                 .load(instagramData.images.lowResolution.url)
+                        //.resize(350, 350)
+                .fit()
+                //.setIndicatorsEnabled(true)
                 .into(holder.mImage);
         /*if(!TextUtils.isEmpty(instagramData.images.standardResolution.url)){
             Log.d(TAG, "Standard Resolution ------ " + instagramData.images.standardResolution.url);
