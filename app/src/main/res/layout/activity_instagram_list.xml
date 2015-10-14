@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="com.example.tyson.retrofitexample.View.InstagramListActivity">
+    tools:context="com.example.tyson.retrofitexample.View.InstagramListActivity"
+    android:id="@+id/content">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"

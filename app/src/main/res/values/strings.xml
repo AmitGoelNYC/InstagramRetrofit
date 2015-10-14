@@ -3,4 +3,9 @@
     <string name="title_activity_instagram_list">InstagramListActivity</string>
     <string name="hint">Please select a category</string>
     <string name="click">Click</string>
+    <string name="home">HOME</string>
+    <string name="favourite">FAVORITE</string>
+    <string name="downloaded">DOWNLOADED</string>
+    <string name="more">MORE</string>
+    <string name="settings">SETTINGS</string>
 </resources>

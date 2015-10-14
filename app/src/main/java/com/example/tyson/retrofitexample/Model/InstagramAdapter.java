@@ -45,7 +45,7 @@ public class InstagramAdapter extends RecyclerView.Adapter<InstagramAdapter.Hold
         holder.mInstructions.setText(instagramData.id);
 
         Picasso.with(holder.itemView.getContext())
-                .load(instagramData.images.thumbnail.url.replace("s150x150","s640x640"))
+                .load(instagramData.images.lowResolution.url)
                 .into(holder.mImage);
         /*if(!TextUtils.isEmpty(instagramData.images.standardResolution.url)){
             Log.d(TAG, "Standard Resolution ------ " + instagramData.images.standardResolution.url);

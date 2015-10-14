@@ -12,9 +12,6 @@ import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
 
-/**
- * Created by ag on 10/12/2015.
- */
 public class Controller {
 
     private static final String CLIENT_ID = "5f9365e9f1054aa991726d731c65aa02";
@@ -33,7 +30,7 @@ public class Controller {
                 public void success(InstagramData instaData, Response response) {
                     Log.d(TAG, response.getUrl());
                     for (int i = 0; i < instaData.instagrams.size(); i++) {
-                        Log.d(TAG, searchText + " Username - " + instaData.instagrams.get(i).user.username);
+                        Log.d(TAG, searchText + " Size - " + instaData.instagrams.get(i).images.lowResolution.width);
                     }
 
                     mListener.onFetchProgress(instaData.instagrams);

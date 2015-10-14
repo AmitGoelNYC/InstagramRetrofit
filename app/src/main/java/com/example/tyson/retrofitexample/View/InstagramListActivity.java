@@ -1,11 +1,13 @@
 package com.example.tyson.retrofitexample.View;
 
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
 
 import com.example.tyson.retrofitexample.Controller.Controller;
 import com.example.tyson.retrofitexample.Model.InstagramAdapter;
@@ -17,6 +19,7 @@ import java.util.List;
 
 public class InstagramListActivity extends AppCompatActivity implements Controller.InstagramCallbackListener{
 
+    private View content;
     //private static final String USER = "AMITGOELNYC";
     private String searchText;
     private RecyclerView mRecyclerView;
@@ -31,6 +34,8 @@ public class InstagramListActivity extends AppCompatActivity implements Controll
         setContentView(R.layout.activity_instagram_list);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        content = findViewById(R.id.content);
 
         mController = new Controller(this);
         Bundle extras = getIntent().getExtras();
@@ -75,6 +80,7 @@ public class InstagramListActivity extends AppCompatActivity implements Controll
     @Override
     public void onFetchComplete() {
         mSwipeRefreshLayout.setRefreshing(false);
+        Snackbar.make(content, " pressed", Snackbar.LENGTH_LONG).show();
     }
 
     @Override
